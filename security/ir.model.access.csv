@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_ove_structure,ove.structure,model_ove_structure,is_ove.group_is_ove_manager,1,1,1,1
+ove_structure_professionnel,ove.structure.professionnel,model_ove_structure_professionnel,is_ove.group_is_ove_manager,1,1,1,1
+access_ove_usager_structure,ove.usager.structure,model_ove_usager_structure,is_ove.group_is_ove_manager,1,1,1,1

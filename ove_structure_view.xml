@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+    
+		<!-- Structure -->
+		<record id="view_is_ove_structure_tree" model="ir.ui.view">
+            <field name="name">is.ove.structure.tree</field>
+            <field name="model">ove.structure</field>
+            <field name="arch" type="xml">
+                <tree string="Structures de OVE">
+                    <field name="name" />
+                    <field name="identifiant"/>
+                </tree>
+            </field>
+        </record>
+        
+        <record id="view_is_ove_structure_filter" model="ir.ui.view">
+            <field name="name">is.ove.structure.select</field>
+            <field name="model">ove.structure</field>
+            <field name="arch" type="xml">
+                <search string="Recherche des structures">
+                   <field name="name" />
+				   <field name="identifiant" />
+               </search>
+            </field>
+        </record>
+        
+        <record id="view_is_ove_structure_form" model="ir.ui.view">
+            <field name="name">is.ove.structure.form</field>
+            <field name="model">ove.structure</field>
+            <field name="arch" type="xml">
+                <form string="Structures de OVE">
+                  <group name="structure">
+                    	<field name="name" />
+						<field name="identifiant" />
+                  </group>
+                  <group name="users_structure" string="Professionnels">
+                    	<field name="users_line" nolabel="1">
+                    		<tree string="Professionnels" editable="bottom">
+                				<field name="user_id"/>
+                				<field name="group_1"/>
+                				<field name="group_2"/>
+                				<field name="group_3"/>
+                				<field name="group_4"/>
+                				<field name="group_5"/>
+                				<field name="group_6"/>
+                				<field name="group_7"/>
+                				<field name="group_8"/>
+                				<field name="group_9"/>
+                				<field name="structure_id" invisible="1"/>
+                			</tree>
+                    	</field>
+                  </group>
+                </form>
+            </field>
+        </record>
+        
+        <record id="action_ove_structure" model="ir.actions.act_window">
+            <field name="name">Structures</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">ove.structure</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="search_view_id" ref="view_is_ove_structure_filter"/>
+        </record>
+        
+        <menuitem id="menu_is_ove_structure"  
+        		sequence="1"  name="Structures" 
+        		parent="is_ove.menu_is_ove"
+        		groups="is_ove.group_is_ove_manager"/>
+		
+		<menuitem action="action_ove_structure" 
+				id="menu_action_ove_structure"  sequence="5"  
+				name="Structures" 
+				parent="menu_is_ove_structure"
+				groups="is_ove.group_is_ove_manager"/>
+				
+		<!-- Ajouter les structures aux usagers -->
+        <record id="ove_usager_structure_view" model="ir.ui.view">
+            <field name="name">ove.usager.structure.view</field>
+            <field name="model">is.usager</field>
+            <field name="inherit_id" ref="is_ove.view_ove_usager_form" />
+            <field name="arch" type="xml">
+                <xpath expr="//group[@name='usager']" position="after">
+					<group name="usager_structure" string="Structures">
+                    	<field name="structures_line" nolabel="1">
+                    		<tree string="Structures" editable="bottom">
+                				<field name="structure_id"/>
+                				<field name="group_1"/>
+                				<field name="group_2"/>
+                				<field name="group_3"/>
+                				<field name="group_4"/>
+                				<field name="group_5"/>
+                				<field name="group_6"/>
+                				<field name="group_7"/>
+                				<field name="group_8"/>
+                				<field name="group_9"/>
+                				<field name="usager_id" invisible="1"/>
+                			</tree>
+                    	</field>
+                  </group>
+                  <group name="usager_groupes" string="Groupes">
+                		<field name="group_1"/>
+                		<field name="group_2"/>
+                		<field name="group_3"/>
+                		<field name="group_4"/>
+                		<field name="group_5"/>
+                		<field name="group_6"/>
+                		<field name="group_7"/>
+                		<field name="group_8"/>
+                		<field name="group_9"/>
+                		<field name="group_10"/>
+                  </group>
+                </xpath>
+            </field>
+        </record>
+
+    </data>
+</openerp>
